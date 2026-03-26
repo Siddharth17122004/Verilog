@@ -4,17 +4,19 @@ module siso(
     input clk,
     input rst,
     input serial_in,
-    output wire serial_out
+    output reg serial_out
 );
 
 reg [3:0] q;  
 
 always @(posedge clk or posedge rst) begin
-    if (rst)
+    if (rst) begin
         q <= 0;
-    else
-        q <= {q[2:0], serial_in};
+        serial_out <= 0;
+    end else begin
+        q <= {q[2:0], serial_in};  
+        serial_out <= q[3];        
+    end
 end
 
-assign serial_out = q[3];  
 endmodule
