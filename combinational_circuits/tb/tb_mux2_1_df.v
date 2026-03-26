@@ -1,14 +1,16 @@
 `timescale 1ns/1ps
-module tb_mux2_1;
+module tb_mux2_1_df;
 reg a,b,s;
-wire y_df,y_gl;
+wire y;
 
-mux2_1df uut1(a,b,s,y_df);
-mux2_1gl uut2(a,b,s,y_gl);
+mux2_1_df uut1(a,b,s,y);
+
 
 initial begin
+	$dumpfile("sim/mux2_1_df.vcd");
+	$dumpvars(0,tb_mux2_1_df );
 	$display("2_to_1_MUX Output");
-	$monitor("a=%b b=%b s=%b y_df=%b y_gl=%b",a,b,s,y_df,y_gl);
+	$monitor("a=%b b=%b s=%b y=%b",a,b,s,y);
 	a=0; b=0; s=0;
   	#10 a=0; b=0; s=1;
   	#10 a=0; b=1; s=0;
