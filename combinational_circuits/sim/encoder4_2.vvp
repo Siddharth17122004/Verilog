@@ -1,0 +1,78 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x586a1b02fb90 .scope module, "tb_encoder4_2" "tb_encoder4_2" 2 3;
+ .timescale -9 -12;
+v0x586a1b046b40_0 .var "d", 3 0;
+v0x586a1b046c50_0 .net "y_df", 1 0, L_0x586a1b0470a0;  1 drivers
+v0x586a1b046d10_0 .net "y_gl", 1 0, L_0x586a1b047700;  1 drivers
+S_0x586a1b02fd20 .scope module, "uut1" "encoder4_2df" 2 8, 3 2 0, S_0x586a1b02fb90;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 4 "d";
+    .port_info 1 /OUTPUT 2 "y";
+L_0x586a1b046fb0 .functor OR 1, L_0x586a1b046e10, L_0x586a1b046ee0, C4<0>, C4<0>;
+L_0x586a1b047350 .functor OR 1, L_0x586a1b0471e0, L_0x586a1b0472b0, C4<0>, C4<0>;
+v0x586a1b031ef0_0 .net *"_ivl_12", 0 0, L_0x586a1b0471e0;  1 drivers
+v0x586a1b045b40_0 .net *"_ivl_14", 0 0, L_0x586a1b0472b0;  1 drivers
+v0x586a1b045c20_0 .net *"_ivl_15", 0 0, L_0x586a1b047350;  1 drivers
+v0x586a1b045ce0_0 .net *"_ivl_3", 0 0, L_0x586a1b046e10;  1 drivers
+v0x586a1b045dc0_0 .net *"_ivl_5", 0 0, L_0x586a1b046ee0;  1 drivers
+v0x586a1b045ef0_0 .net *"_ivl_6", 0 0, L_0x586a1b046fb0;  1 drivers
+v0x586a1b045fd0_0 .net "d", 3 0, v0x586a1b046b40_0;  1 drivers
+v0x586a1b0460b0_0 .net "y", 1 0, L_0x586a1b0470a0;  alias, 1 drivers
+L_0x586a1b046e10 .part v0x586a1b046b40_0, 1, 1;
+L_0x586a1b046ee0 .part v0x586a1b046b40_0, 3, 1;
+L_0x586a1b0470a0 .concat8 [ 1 1 0 0], L_0x586a1b046fb0, L_0x586a1b047350;
+L_0x586a1b0471e0 .part v0x586a1b046b40_0, 2, 1;
+L_0x586a1b0472b0 .part v0x586a1b046b40_0, 3, 1;
+S_0x586a1b0461f0 .scope module, "uut2" "encoder4_2gl" 2 9, 3 7 0, S_0x586a1b02fb90;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 4 "d";
+    .port_info 1 /OUTPUT 2 "y";
+L_0x586a1b0474b0 .functor OR 1, L_0x586a1b047520, L_0x586a1b047610, C4<0>, C4<0>;
+L_0x586a1b047840 .functor OR 1, L_0x586a1b047900, L_0x586a1b047a20, C4<0>, C4<0>;
+v0x586a1b0463d0_0 .net *"_ivl_0", 0 0, L_0x586a1b0474b0;  1 drivers
+v0x586a1b0464d0_0 .net *"_ivl_10", 0 0, L_0x586a1b047900;  1 drivers
+v0x586a1b0465b0_0 .net *"_ivl_12", 0 0, L_0x586a1b047a20;  1 drivers
+v0x586a1b046670_0 .net *"_ivl_3", 0 0, L_0x586a1b047520;  1 drivers
+v0x586a1b046750_0 .net *"_ivl_5", 0 0, L_0x586a1b047610;  1 drivers
+v0x586a1b046880_0 .net *"_ivl_6", 0 0, L_0x586a1b047840;  1 drivers
+v0x586a1b046960_0 .net "d", 3 0, v0x586a1b046b40_0;  alias, 1 drivers
+v0x586a1b046a20_0 .net "y", 1 0, L_0x586a1b047700;  alias, 1 drivers
+L_0x586a1b047520 .part v0x586a1b046b40_0, 1, 1;
+L_0x586a1b047610 .part v0x586a1b046b40_0, 3, 1;
+L_0x586a1b047700 .concat8 [ 1 1 0 0], L_0x586a1b0474b0, L_0x586a1b047840;
+L_0x586a1b047900 .part v0x586a1b046b40_0, 2, 1;
+L_0x586a1b047a20 .part v0x586a1b046b40_0, 3, 1;
+    .scope S_0x586a1b02fb90;
+T_0 ;
+    %vpi_call 2 12 "$display", "d    | y_df y_gl" {0 0 0};
+    %vpi_call 2 13 "$monitor", "%b |  %b   %b", v0x586a1b046b40_0, v0x586a1b046c50_0, v0x586a1b046d10_0 {0 0 0};
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v0x586a1b046b40_0, 0, 4;
+    %delay 10000, 0;
+    %pushi/vec4 2, 0, 4;
+    %store/vec4 v0x586a1b046b40_0, 0, 4;
+    %delay 10000, 0;
+    %pushi/vec4 4, 0, 4;
+    %store/vec4 v0x586a1b046b40_0, 0, 4;
+    %delay 10000, 0;
+    %pushi/vec4 8, 0, 4;
+    %store/vec4 v0x586a1b046b40_0, 0, 4;
+    %delay 10000, 0;
+    %delay 10000, 0;
+    %vpi_call 2 20 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb/tb_encoder4_2.v";
+    "src/encoder4_2.v";
