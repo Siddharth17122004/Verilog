@@ -1,0 +1,83 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x58fd41fa6d40 .scope module, "tb_barrel_shifter" "tb_barrel_shifter" 2 2;
+ .timescale -9 -12;
+v0x58fd41fbf500_0 .var "data", 3 0;
+v0x58fd41fbf5e0_0 .var "dir", 0 0;
+v0x58fd41fbf6b0_0 .net "result", 3 0, L_0x58fd41fbfa90;  1 drivers
+v0x58fd41fbf7b0_0 .var "shamt", 1 0;
+S_0x58fd41fa6ed0 .scope module, "uut" "barrel_shifter_4bit" 2 8, 3 2 0, S_0x58fd41fa6d40;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "data";
+    .port_info 1 /INPUT 2 "shamt";
+    .port_info 2 /INPUT 1 "dir";
+    .port_info 3 /OUTPUT 4 "result";
+v0x58fd41fa7120_0 .net *"_ivl_0", 3 0, L_0x58fd41fbf880;  1 drivers
+v0x58fd41fbefe0_0 .net *"_ivl_2", 3 0, L_0x58fd41fbf9f0;  1 drivers
+v0x58fd41fbf0c0_0 .net "data", 3 0, v0x58fd41fbf500_0;  1 drivers
+v0x58fd41fbf1b0_0 .net "dir", 0 0, v0x58fd41fbf5e0_0;  1 drivers
+v0x58fd41fbf270_0 .net "result", 3 0, L_0x58fd41fbfa90;  alias, 1 drivers
+v0x58fd41fbf3a0_0 .net "shamt", 1 0, v0x58fd41fbf7b0_0;  1 drivers
+L_0x58fd41fbf880 .shift/r 4, v0x58fd41fbf500_0, v0x58fd41fbf7b0_0;
+L_0x58fd41fbf9f0 .shift/l 4, v0x58fd41fbf500_0, v0x58fd41fbf7b0_0;
+L_0x58fd41fbfa90 .functor MUXZ 4, L_0x58fd41fbf9f0, L_0x58fd41fbf880, v0x58fd41fbf5e0_0, C4<>;
+    .scope S_0x58fd41fa6d40;
+T_0 ;
+    %vpi_call 2 11 "$dumpfile", "barrel_shifter.vcd" {0 0 0};
+    %vpi_call 2 12 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x58fd41fa6d40 {0 0 0};
+    %pushi/vec4 11, 0, 4;
+    %store/vec4 v0x58fd41fbf500_0, 0, 4;
+    %vpi_call 2 14 "$display", "=== Left Shifts ===" {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x58fd41fbf5e0_0, 0, 1;
+    %pushi/vec4 0, 0, 2;
+    %store/vec4 v0x58fd41fbf7b0_0, 0, 2;
+    %delay 10000, 0;
+    %vpi_call 2 16 "$display", "data=%b << %0d = %b", v0x58fd41fbf500_0, v0x58fd41fbf7b0_0, v0x58fd41fbf6b0_0 {0 0 0};
+    %pushi/vec4 1, 0, 2;
+    %store/vec4 v0x58fd41fbf7b0_0, 0, 2;
+    %delay 10000, 0;
+    %vpi_call 2 17 "$display", "data=%b << %0d = %b", v0x58fd41fbf500_0, v0x58fd41fbf7b0_0, v0x58fd41fbf6b0_0 {0 0 0};
+    %pushi/vec4 2, 0, 2;
+    %store/vec4 v0x58fd41fbf7b0_0, 0, 2;
+    %delay 10000, 0;
+    %vpi_call 2 18 "$display", "data=%b << %0d = %b", v0x58fd41fbf500_0, v0x58fd41fbf7b0_0, v0x58fd41fbf6b0_0 {0 0 0};
+    %pushi/vec4 3, 0, 2;
+    %store/vec4 v0x58fd41fbf7b0_0, 0, 2;
+    %delay 10000, 0;
+    %vpi_call 2 19 "$display", "data=%b << %0d = %b", v0x58fd41fbf500_0, v0x58fd41fbf7b0_0, v0x58fd41fbf6b0_0 {0 0 0};
+    %vpi_call 2 20 "$display", "=== Right Shifts ===" {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x58fd41fbf5e0_0, 0, 1;
+    %pushi/vec4 0, 0, 2;
+    %store/vec4 v0x58fd41fbf7b0_0, 0, 2;
+    %delay 10000, 0;
+    %vpi_call 2 22 "$display", "data=%b >> %0d = %b", v0x58fd41fbf500_0, v0x58fd41fbf7b0_0, v0x58fd41fbf6b0_0 {0 0 0};
+    %pushi/vec4 1, 0, 2;
+    %store/vec4 v0x58fd41fbf7b0_0, 0, 2;
+    %delay 10000, 0;
+    %vpi_call 2 23 "$display", "data=%b >> %0d = %b", v0x58fd41fbf500_0, v0x58fd41fbf7b0_0, v0x58fd41fbf6b0_0 {0 0 0};
+    %pushi/vec4 2, 0, 2;
+    %store/vec4 v0x58fd41fbf7b0_0, 0, 2;
+    %delay 10000, 0;
+    %vpi_call 2 24 "$display", "data=%b >> %0d = %b", v0x58fd41fbf500_0, v0x58fd41fbf7b0_0, v0x58fd41fbf6b0_0 {0 0 0};
+    %pushi/vec4 3, 0, 2;
+    %store/vec4 v0x58fd41fbf7b0_0, 0, 2;
+    %delay 10000, 0;
+    %vpi_call 2 25 "$display", "data=%b >> %0d = %b", v0x58fd41fbf500_0, v0x58fd41fbf7b0_0, v0x58fd41fbf6b0_0 {0 0 0};
+    %vpi_call 2 26 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb/tb_barrel_shifter.v";
+    "src/barrel_shifter.v";
