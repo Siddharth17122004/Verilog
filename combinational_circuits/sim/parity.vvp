@@ -1,0 +1,93 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x605041f9c980 .scope module, "tb_parity" "tb_parity" 2 2;
+ .timescale -9 -12;
+v0x605041fc8310_0 .var "data", 3 0;
+v0x605041fc8420_0 .net "ee", 0 0, L_0x605041fc8c40;  1 drivers
+v0x605041fc84e0_0 .net "ep", 0 0, L_0x605041fc8810;  1 drivers
+v0x605041fc8580_0 .net "oe", 0 0, L_0x605041fc8d50;  1 drivers
+v0x605041fc8650_0 .net "op", 0 0, L_0x605041fc89a0;  1 drivers
+v0x605041fc8740_0 .var "pb", 0 0;
+S_0x605041f9f8e0 .scope module, "pc" "parity_check" 2 9, 3 12 0, S_0x605041f9c980;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "data";
+    .port_info 1 /INPUT 1 "parity_bit";
+    .port_info 2 /OUTPUT 1 "even_error";
+    .port_info 3 /OUTPUT 1 "odd_error";
+L_0x605041fc8c40 .functor BUFZ 1, L_0x605041fc8b50, C4<0>, C4<0>, C4<0>;
+L_0x605041fc8d50 .functor NOT 1, L_0x605041fc8b50, C4<0>, C4<0>, C4<0>;
+v0x605041f9fb30_0 .net *"_ivl_0", 4 0, L_0x605041fc8a60;  1 drivers
+v0x605041fc78d0_0 .net "data", 3 0, v0x605041fc8310_0;  1 drivers
+v0x605041fc79b0_0 .net "even_error", 0 0, L_0x605041fc8c40;  alias, 1 drivers
+v0x605041fc7a50_0 .net "odd_error", 0 0, L_0x605041fc8d50;  alias, 1 drivers
+v0x605041fc7b10_0 .net "parity_bit", 0 0, v0x605041fc8740_0;  1 drivers
+v0x605041fc7c20_0 .net "xor_all", 0 0, L_0x605041fc8b50;  1 drivers
+L_0x605041fc8a60 .concat [ 1 4 0 0], v0x605041fc8740_0, v0x605041fc8310_0;
+L_0x605041fc8b50 .reduce/xor L_0x605041fc8a60;
+S_0x605041fc7d60 .scope module, "pg" "parity_gen" 2 5, 3 2 0, S_0x605041f9c980;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "data";
+    .port_info 1 /OUTPUT 1 "even_parity";
+    .port_info 2 /OUTPUT 1 "odd_parity";
+L_0x605041fc89a0 .functor NOT 1, L_0x605041fc8900, C4<0>, C4<0>, C4<0>;
+v0x605041fc7fb0_0 .net *"_ivl_3", 0 0, L_0x605041fc8900;  1 drivers
+v0x605041fc8090_0 .net "data", 3 0, v0x605041fc8310_0;  alias, 1 drivers
+v0x605041fc8150_0 .net "even_parity", 0 0, L_0x605041fc8810;  alias, 1 drivers
+v0x605041fc81f0_0 .net "odd_parity", 0 0, L_0x605041fc89a0;  alias, 1 drivers
+L_0x605041fc8810 .reduce/xor v0x605041fc8310_0;
+L_0x605041fc8900 .reduce/xor v0x605041fc8310_0;
+    .scope S_0x605041f9c980;
+T_0 ;
+    %vpi_call 2 12 "$dumpfile", "parity.vcd" {0 0 0};
+    %vpi_call 2 13 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x605041f9c980 {0 0 0};
+    %vpi_call 2 14 "$display", "=== Parity Generator ===" {0 0 0};
+    %vpi_call 2 15 "$display", "Data  | EvenP | OddP" {0 0 0};
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v0x605041fc8310_0, 0, 4;
+    %delay 10000, 0;
+    %vpi_call 2 16 "$display", "%b | %b | %b", v0x605041fc8310_0, v0x605041fc84e0_0, v0x605041fc8650_0 {0 0 0};
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v0x605041fc8310_0, 0, 4;
+    %delay 10000, 0;
+    %vpi_call 2 17 "$display", "%b | %b | %b", v0x605041fc8310_0, v0x605041fc84e0_0, v0x605041fc8650_0 {0 0 0};
+    %pushi/vec4 10, 0, 4;
+    %store/vec4 v0x605041fc8310_0, 0, 4;
+    %delay 10000, 0;
+    %vpi_call 2 18 "$display", "%b | %b | %b", v0x605041fc8310_0, v0x605041fc84e0_0, v0x605041fc8650_0 {0 0 0};
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v0x605041fc8310_0, 0, 4;
+    %delay 10000, 0;
+    %vpi_call 2 19 "$display", "%b | %b | %b", v0x605041fc8310_0, v0x605041fc84e0_0, v0x605041fc8650_0 {0 0 0};
+    %pushi/vec4 12, 0, 4;
+    %store/vec4 v0x605041fc8310_0, 0, 4;
+    %delay 10000, 0;
+    %vpi_call 2 20 "$display", "%b | %b | %b", v0x605041fc8310_0, v0x605041fc84e0_0, v0x605041fc8650_0 {0 0 0};
+    %vpi_call 2 22 "$display", "=== Parity Checker ===" {0 0 0};
+    %pushi/vec4 10, 0, 4;
+    %store/vec4 v0x605041fc8310_0, 0, 4;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x605041fc8740_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 24 "$display", "data=%b parity=%b => even_err=%b odd_err=%b", v0x605041fc8310_0, v0x605041fc8740_0, v0x605041fc8420_0, v0x605041fc8580_0 {0 0 0};
+    %pushi/vec4 10, 0, 4;
+    %store/vec4 v0x605041fc8310_0, 0, 4;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x605041fc8740_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 26 "$display", "data=%b parity=%b => even_err=%b odd_err=%b (inject error)", v0x605041fc8310_0, v0x605041fc8740_0, v0x605041fc8420_0, v0x605041fc8580_0 {0 0 0};
+    %vpi_call 2 27 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb/tb_parity.v";
+    "src/parity.v";

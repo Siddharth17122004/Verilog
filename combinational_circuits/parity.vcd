@@ -1,0 +1,79 @@
+$date
+	Sun Apr 12 23:53:54 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_parity $end
+$var wire 1 ! op $end
+$var wire 1 " oe $end
+$var wire 1 # ep $end
+$var wire 1 $ ee $end
+$var reg 4 % data [3:0] $end
+$var reg 1 & pb $end
+$scope module pc $end
+$var wire 4 ' data [3:0] $end
+$var wire 1 $ even_error $end
+$var wire 1 " odd_error $end
+$var wire 1 & parity_bit $end
+$var wire 1 ( xor_all $end
+$upscope $end
+$scope module pg $end
+$var wire 4 ) data [3:0] $end
+$var wire 1 ! odd_parity $end
+$var wire 1 # even_parity $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b0 )
+x(
+b0 '
+x&
+b0 %
+x$
+0#
+x"
+1!
+$end
+#10000
+0!
+1#
+b1 %
+b1 '
+b1 )
+#20000
+1!
+0#
+b1010 %
+b1010 '
+b1010 )
+#30000
+b1111 %
+b1111 '
+b1111 )
+#40000
+b1100 %
+b1100 '
+b1100 )
+#50000
+1"
+0$
+0(
+0&
+b1010 %
+b1010 '
+b1010 )
+#60000
+0"
+1$
+1(
+1&
+#70000
